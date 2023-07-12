@@ -11,18 +11,10 @@ class Ctrdepense extends Controller
 {
     public function create(Request $request){
         $request->validate([
-            'Departement' => 'required',
-            'obejet' => 'required',
-            'piece' => 'required',
-            'text' => 'required',
-            'membre_id' => 'required',
+            'depense' => 'required',
         ]);
         $valide = depense::create([
-            'Departement' => $request->Departement,
-            'obejet' => $request->obejet,
-            'piece' => $request->piece,
-            'text' => $request->text,
-            'membre_id' => $request->membre_id
+            'depense' => $request->depense,
         ]);
 
         return response()->json([
@@ -67,20 +59,12 @@ class Ctrdepense extends Controller
     //update
     public function update(Request $request, $id){
         $request->validate([
-            'Departement' => 'required',
-            'obejet' => 'required',
-            'piece' => 'required',
-            'text' => 'required',
-            'membre_id' => 'required'
+            'depense' => 'required',
         ]);
         $verify = depense::whereId($id)->first();
         if($verify == true){
              $verify->update([
-                'Departement' => $request->Departement,
-                'obejet' => $request->obejet,
-                'piece' => $request->piece,
-                'text' => $request->text,
-                'membre_id' => $request->membre_id
+                'depense' => $request->depense,
              ]);
              return response()->json([
                  'message' => 'La ùodification a été fait avec succes ! ',

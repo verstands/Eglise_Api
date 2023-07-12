@@ -32,7 +32,7 @@ class Ctrtype_depense extends Controller
         ]);
 
         return response()->json([
-            'message' => "type_depense créé avec succès !",
+            'message' => "Depense effectué avec succès !",
             'data' => $valide
         ], 200);
     }

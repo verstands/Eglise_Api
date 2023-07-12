@@ -11,6 +11,6 @@ class depense extends Model
 {
     use HasFactory, HasApiTokens;
     protected $fillable = [
-        'nom_depart',
+        'depense',
     ];
 }
