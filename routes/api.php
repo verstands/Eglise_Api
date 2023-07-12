@@ -22,6 +22,11 @@ use App\Http\Controllers\Ctrplanning;
 use App\Http\Controllers\Ctrsousmenu;
 use App\Http\Controllers\Ctrstatistique;
 use App\Http\Controllers\Ctraffectation;
+use App\Http\Controllers\Ctrcategorie;
+use App\Http\Controllers\Ctrculte;
+use App\Http\Controllers\Ctrtypeoffrande;
+use App\Http\Controllers\Ctrcaisse;
+use App\Http\Controllers\Ctrtype_depense;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -141,10 +146,40 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::delete('/departement/{id}', [Ctrdepartement::class, 'indexID']);
     Route::put('/departement/{id}', [Ctrdepartement::class, 'update']);
     //Ctraffectation
-     Route::post('/affectation', [Ctraffectation::class, 'create']);
+    Route::post('/affectation', [Ctraffectation::class, 'create']);
     Route::get('/affectations', [Ctraffectation::class, 'index']);
     Route::get('/affectation/{id}', [Ctraffectation::class, 'indexID']);
     Route::delete('/affectation/{id}', [Ctraffectation::class, 'indexID']);
     Route::put('/affectation/{id}', [Ctraffectation::class, 'update']);
+    //culte
+    Route::post('/culte', [Ctrculte::class, 'create']);
+    Route::get('/cultes', [Ctrculte::class, 'index']);
+    Route::get('/culte/{id}', [Ctrculte::class, 'indexID']);
+    Route::delete('/culte/{id}', [Ctrculte::class, 'indexID']);
+    Route::put('/culte/{id}', [Ctrculte::class, 'update']);
+    //categorie
+    Route::post('/categorie', [Ctrcategorie::class, 'create']);
+    Route::get('/categories', [Ctrcategorie::class, 'index']);
+    Route::get('/categorie/{id}', [Ctrcategorie::class, 'indexID']);
+    Route::delete('/categorie/{id}', [Ctrcategorie::class, 'indexID']);
+    Route::put('/categorie/{id}', [Ctrcategorie::class, 'update']);
+    //type_offrande
+    Route::post('/typeoffrande', [Ctrtypeoffrande::class, 'create']);
+    Route::get('/typeoffrandes', [Ctrtypeoffrande::class, 'index']);
+    Route::get('/typeoffrande/{id}', [Ctrtypeoffrande::class, 'indexID']);
+    Route::delete('/typeoffrande/{id}', [Ctrtypeoffrande::class, 'indexID']);
+    Route::put('/typeoffrande/{id}', [Ctrtypeoffrande::class, 'update']);
+    //caisse
+    Route::post('/caisse', [Ctrcaisse::class, 'create']);
+    Route::get('/caisses', [Ctrcaisse::class, 'index']);
+    Route::get('/caisse/{id}', [Ctrcaisse::class, 'indexID']);
+    Route::delete('/caisse/{id}', [Ctrcaisse::class, 'indexID']);
+    Route::put('/caisse/{id}', [Ctrcaisse::class, 'update']);
+    //Ctrtype_depense
+    Route::post('/type_depense', [Ctrtype_depense::class, 'create']);
+    Route::get('/type_depenses', [Ctrtype_depense::class, 'index']);
+    Route::get('/type_depense/{id}', [Ctrtype_depense::class, 'indexID']);
+    Route::delete('/type_depense/{id}', [Ctrtype_depense::class, 'indexID']);
+    Route::put('/type_depense/{id}', [Ctrtype_depense::class, 'update']);
 });
 

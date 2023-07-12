@@ -2,57 +2,50 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\depense;
+use App\Models\culte;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class Ctrdepense extends Controller
+class Ctrculte extends Controller
 {
     public function create(Request $request){
         $request->validate([
-            'Departement' => 'required',
-            'obejet' => 'required',
-            'piece' => 'required',
-            'text' => 'required',
-            'membre_id' => 'required',
+            'nom_culte' => 'required',
         ]);
-        $valide = depense::create([
-            'Departement' => $request->Departement,
-            'obejet' => $request->obejet,
-            'piece' => $request->piece,
-            'text' => $request->text,
-            'membre_id' => $request->membre_id
+        $valide = culte::create([
+            'nom_culte' => $request->nom_culte,
         ]);
 
         return response()->json([
-            'message' => "depense créé avec succès !",
+            'message' => "culte créé avec succès !",
             'data' => $valide
         ], 200);
     }
     //index
     public function index(){
-        $view = depense::all();
+        $view = culte::all();
         return response()->json([
             'data' => $view
         ], 200);
     }
     //get ID
     public function indexID($id){
-        $verify = depense::whereId(['id' => $id])->first();
+        $verify = culte::whereId(['id' => $id])->first();
         if($verify){
             return response()->json([
                 'data' => $verify
              ],200);
         }else{
             return response()->json([
-                'message' => "administrateur non trouvé !"
+                'message' => "culte non trouvé !"
             ], 401);
         }  
     }
     //delete
     public function delete($id){
-        $verify = depense::whereId($id)->first();
+        $verify = culte::whereId($id)->first();
         if($verify == true){
              $verify->delete();
              return response()->json([
@@ -67,23 +60,15 @@ class Ctrdepense extends Controller
     //update
     public function update(Request $request, $id){
         $request->validate([
-            'Departement' => 'required',
-            'obejet' => 'required',
-            'piece' => 'required',
-            'text' => 'required',
-            'membre_id' => 'required'
+            'nom_culte' => 'required'
         ]);
-        $verify = depense::whereId($id)->first();
+        $verify = culte::whereId($id)->first();
         if($verify == true){
              $verify->update([
-                'Departement' => $request->Departement,
-                'obejet' => $request->obejet,
-                'piece' => $request->piece,
-                'text' => $request->text,
-                'membre_id' => $request->membre_id
+                'nom_culte' => $request->nom_culte,
              ]);
              return response()->json([
-                 'message' => 'La ùodification a été fait avec succes ! ',
+                 'message' => 'La modification a été fait avec succes ! ',
              ], 200);
          }else{
              return response()->json([
