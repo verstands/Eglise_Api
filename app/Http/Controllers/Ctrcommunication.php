@@ -15,14 +15,13 @@ class Ctrcommunication extends Controller
             'obejet' => 'required',
             'piece' => 'required',
             'text' => 'required',
-            'membre_id' => 'required',
         ]);
         $valide = communication::create([
             'Departement' => $request->Departement,
             'obejet' => $request->obejet,
             'piece' => $request->piece,
             'text' => $request->text,
-            'membre_id' => $request->membre_id
+            'membre_id' => Auth::user()->id
         ]);
 
         return response()->json([
@@ -32,9 +31,8 @@ class Ctrcommunication extends Controller
     }
     //index
     public function index(){
-        $view = communication::all();
+        $view = communication::with('membre')->get();
         return response()->json([
-            'message' => 'Les memnres',
             'data' => $view
         ], 200);
     }

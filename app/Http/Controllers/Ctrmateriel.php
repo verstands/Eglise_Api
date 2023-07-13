@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\materiel;
+use App\Models\devise;
+use App\Models\departement;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -11,22 +13,24 @@ class Ctrmateriel extends Controller
 {
     public function create(Request $request){
         $request->validate([
-            'Departement' => 'required',
-            'obejet' => 'required',
-            'piece' => 'required',
-            'text' => 'required',
-            'membre_id' => 'required',
+            'materiel' => 'required',
+            'categorie_id' => 'required',
+            'stock' => 'required',
+            'cout' => 'required',
+            'devide_id' => 'required',
+            'id_departement' => 'required',
         ]);
         $valide = materiel::create([
-            'Departement' => $request->Departement,
-            'obejet' => $request->obejet,
-            'piece' => $request->piece,
-            'text' => $request->text,
-            'membre_id' => $request->membre_id
+            'materiel' => $request->materiel,
+            'categorie_id' => $request->categorie_id,
+            'stock' => $request->stock,
+            'cout' => $request->cout,
+            'devide_id' => $request->devide_id,
+            'id_departement' => $request->id_departement
         ]);
 
         return response()->json([
-            'message' => "materiel créé avec succès !",
+            'message' => "materiel ajouté avec succès !",
             'data' => $valide
         ], 200);
     }
@@ -34,7 +38,6 @@ class Ctrmateriel extends Controller
     public function index(){
         $view = materiel::all();
         return response()->json([
-            'message' => 'Les memnres',
             'data' => $view
         ], 200);
     }

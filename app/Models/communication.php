@@ -20,6 +20,6 @@ class communication extends Model
     ];
 
     public function membre(){
-        return $this->belongsTo(membre::class);
+        return $this->belongsTo(membre::class,'membre_id');
     }
 }

@@ -47,7 +47,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/membre', [Ctrmembre::class, 'create']);
     Route::get('/membres', [Ctrmembre::class, 'index']);
     Route::get('/membre/{id}', [Ctrmembre::class, 'indexID']);
-    Route::delete('/membre/{id}', [Ctrmembre::class, 'indexID']);
+    Route::delete('/membre/{id}', [Ctrmembre::class, 'delete']);
     Route::put('/membre/{id}', [Ctrmembre::class, 'update']);
     //communication
     Route::post('/communication', [Ctrcommunication::class, 'create']);
