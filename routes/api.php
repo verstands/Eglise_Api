@@ -53,7 +53,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/communication', [Ctrcommunication::class, 'create']);
     Route::get('/communications', [Ctrcommunication::class, 'index']);
     Route::get('/communication/{id}', [Ctrcommunication::class, 'indexID']);
-    Route::delete('/communication/{id}', [Ctrcommunication::class, 'indexID']);
+    Route::delete('/communication/{id}', [Ctrcommunication::class, 'delete']);
     Route::put('/communication/{id}', [Ctrcommunication::class, 'update']);
     //depense
     Route::post('/depense', [Ctrdepense::class, 'create']);
@@ -155,7 +155,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/culte', [Ctrculte::class, 'create']);
     Route::get('/cultes', [Ctrculte::class, 'index']);
     Route::get('/culte/{id}', [Ctrculte::class, 'indexID']);
-    Route::delete('/culte/{id}', [Ctrculte::class, 'indexID']);
+    Route::delete('/culte/{id}', [Ctrculte::class, 'delete']);
     Route::put('/culte/{id}', [Ctrculte::class, 'update']);
     //categorie
     Route::post('/categorie', [Ctrcategorie::class, 'create']);
