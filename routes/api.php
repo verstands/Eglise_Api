@@ -77,7 +77,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/finance', [Ctrfinance::class, 'create']);
     Route::get('/finances', [Ctrfinance::class, 'index']);
     Route::get('/finance/{id}', [Ctrfinance::class, 'indexID']);
-    Route::delete('/finance/{id}', [Ctrfinance::class, 'indexID']);
+    Route::delete('/finance/{id}', [Ctrfinance::class, 'delete']);
     Route::put('/finance/{id}', [Ctrfinance::class, 'update']);
     //materiel
     Route::post('/materiel', [Ctrmateriel::class, 'create']);
