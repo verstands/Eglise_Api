@@ -142,6 +142,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     //departement Ctrdepartement 
     Route::post('/departement', [Ctrdepartement::class, 'create']);
     Route::get('/departements', [Ctrdepartement::class, 'index']);
+    Route::get('/departementActivite/{departement}', [Ctrdepartement::class, 'da']);
     Route::get('/departement/{id}', [Ctrdepartement::class, 'indexID']);
     Route::delete('/departement/{id}', [Ctrdepartement::class, 'indexID']);
     Route::put('/departement/{id}', [Ctrdepartement::class, 'update']);

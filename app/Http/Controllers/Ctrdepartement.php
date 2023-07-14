@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\departement;
+use App\Models\activite;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -55,6 +56,15 @@ class Ctrdepartement extends Controller
                  'message' => ' identifiant non trouvé ! '
              ], 401);
          }
+    }
+
+    public function da($departement){
+        $verify = activite::where('departement_id', $departement)
+        ->with('departement')
+        ->get();
+        return response()->json([
+            'data' =>  $verify
+        ], 200);
     }
     //update
     public function update(Request $request, $id){
