@@ -59,7 +59,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/depense', [Ctrdepense::class, 'create']);
     Route::get('/depenses', [Ctrdepense::class, 'index']);
     Route::get('/depense/{id}', [Ctrdepense::class, 'indexID']);
-    Route::delete('/depense/{id}', [Ctrdepense::class, 'indexID']);
+    Route::delete('/depense/{id}', [Ctrdepense::class, 'delete']);
     Route::put('/depense/{id}', [Ctrdepense::class, 'update']);
     //devise
     Route::post('/devise', [Ctrdevise::class, 'create']);
@@ -113,7 +113,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/nouveauvenu', [Ctrnouveauvenu::class, 'create']);
     Route::get('/nouveauvenus', [Ctrnouveauvenu::class, 'index']);
     Route::get('/nouveauvenu/{id}', [Ctrnouveauvenu::class, 'indexID']);
-    Route::delete('/nouveauvenu/{id}', [Ctrnouveauvenu::class, 'indexID']);
+    Route::delete('/nouveauvenu/{id}', [Ctrnouveauvenu::class, 'delete']);
     Route::put('/nouveauvenu/{id}', [Ctrnouveauvenu::class, 'update']);
     //paie
     Route::post('/paie', [Ctrpaie::class, 'create']);
