@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\culte;
+
 
 
 class nouveauvenu extends Model
@@ -18,4 +20,9 @@ class nouveauvenu extends Model
         'egliseprovenance',
         'categorie',
     ];
+
+    
+    public function culte(){
+        return $this->belongsTo(culte::class, 'culte');
+    }
 }

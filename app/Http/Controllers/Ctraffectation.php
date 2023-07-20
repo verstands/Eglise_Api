@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\affectation;
+use App\Models\membre;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -29,11 +30,24 @@ class Ctraffectation extends Controller
     }
     //index
     public function index(){
-        $view = affectation::all();
+        $view = affectation::with('nom_membre')->with('departement_id')->get();
         return response()->json([
             'data' => $view
         ], 200);
     }
+    /* 
+        public function index()
+{
+    $affectations = affectation::with(['membre' => function($query) {
+        $query->whereDate('datenaissance', '=', Carbon::today()->format('Y-m-d'));
+    }])->get();
+
+    return response()->json([
+        'data' => $affectations
+    ], 200);
+}
+
+    */
     //get ID
     public function indexID($id){
         $verify = affectation::whereId(['id' => $id])->first();

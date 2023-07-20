@@ -89,7 +89,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/membreenfant', [Ctrmembreenfant::class, 'create']);
     Route::get('/membreenfants', [Ctrmembreenfant::class, 'index']);
     Route::get('/membreenfant/{id}', [Ctrmembreenfant::class, 'indexID']);
-    Route::delete('/membreenfant/{id}', [Ctrmembreenfant::class, 'indexID']);
+    Route::delete('/membreenfant/{id}', [Ctrmembreenfant::class, 'delete']);
     Route::put('/membreenfant/{id}', [Ctrmembreenfant::class, 'update']);
     //menu
     Route::post('/menu', [Ctrmenu::class, 'create']);
@@ -107,7 +107,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/mouvement', [Ctrmouvement::class, 'create']);
     Route::get('/mouvements', [Ctrmouvement::class, 'index']);
     Route::get('/mouvement/{id}', [Ctrmouvement::class, 'indexID']);
-    Route::delete('/mouvement/{id}', [Ctrmouvement::class, 'indexID']);
+    Route::delete('/mouvement/{id}', [Ctrmouvement::class, 'delete']);
     Route::put('/mouvement/{id}', [Ctrmouvement::class, 'update']);
     //nouveauvenu
     Route::post('/nouveauvenu', [Ctrnouveauvenu::class, 'create']);
@@ -150,7 +150,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/affectation', [Ctraffectation::class, 'create']);
     Route::get('/affectations', [Ctraffectation::class, 'index']);
     Route::get('/affectation/{id}', [Ctraffectation::class, 'indexID']);
-    Route::delete('/affectation/{id}', [Ctraffectation::class, 'indexID']);
+    Route::delete('/affectation/{id}', [Ctraffectation::class, 'delete']);
     Route::put('/affectation/{id}', [Ctraffectation::class, 'update']);
     //culte
     Route::post('/culte', [Ctrculte::class, 'create']);
