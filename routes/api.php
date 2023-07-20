@@ -106,7 +106,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     //mouvement
     Route::post('/mouvement', [Ctrmouvement::class, 'create']);
     Route::get('/mouvements', [Ctrmouvement::class, 'index']);
-    Route::get('/mouvementmembre/{datedebut}/{datefin}', [Ctrmouvement::class, 'mm']);
+    Route::get('/mouvementmembre/{datedebut}/{datefin}/{nom}', [Ctrmouvement::class, 'mm']);
     Route::get('/mouvement/{id}', [Ctrmouvement::class, 'indexID']);
     Route::delete('/mouvement/{id}', [Ctrmouvement::class, 'delete']);
     Route::put('/mouvement/{id}', [Ctrmouvement::class, 'update']);

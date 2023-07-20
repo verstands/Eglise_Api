@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\membre;
 use App\Models\mission;
+use App\Models\type_mouvement;
 
 
 class mouvement extends Model
@@ -15,6 +16,7 @@ class mouvement extends Model
     protected $fillable = [
         'membre',
         'mission',
+        'id_type'
     ];
 
     public function membre(){
@@ -23,5 +25,9 @@ class mouvement extends Model
 
     public function mission(){
         return $this->belongsTo(mission::class, 'mission');
+    }
+
+    public function id_type(){
+        return $this->belongsTo(type_mouvement::class, 'id_type');
     }
 }
