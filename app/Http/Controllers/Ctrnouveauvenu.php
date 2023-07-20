@@ -34,7 +34,7 @@ class Ctrnouveauvenu extends Controller
     }
     //index
     public function index(){
-        $view = nouveauvenu::all();
+        $view = nouveauvenu::with('culte')->get();
         return response()->json([
             'message' => 'Les memnres',
             'data' => $view
@@ -42,7 +42,7 @@ class Ctrnouveauvenu extends Controller
     }
     //get ID
     public function indexID($id){
-        $verify = nouveauvenu::whereId(['id' => $id])->first();
+        $verify = nouveauvenu::whereId(['id' => $id])->with('culte')->first();
         if($verify){
             return response()->json([
                 'data' => $verify
