@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
 
+
 class membre extends Model
 {
     use HasFactory, HasApiTokens;
@@ -23,5 +24,6 @@ class membre extends Model
         'profession',
         'activite',
         'password',
+        
     ];
 }

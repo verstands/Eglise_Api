@@ -106,6 +106,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     //mouvement
     Route::post('/mouvement', [Ctrmouvement::class, 'create']);
     Route::get('/mouvements', [Ctrmouvement::class, 'index']);
+    Route::get('/mouvementmembre/{datedebut}/{datefin}', [Ctrmouvement::class, 'mm']);
     Route::get('/mouvement/{id}', [Ctrmouvement::class, 'indexID']);
     Route::delete('/mouvement/{id}', [Ctrmouvement::class, 'delete']);
     Route::put('/mouvement/{id}', [Ctrmouvement::class, 'update']);
@@ -182,5 +183,11 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::get('/type_depense/{id}', [Ctrtype_depense::class, 'indexID']);
     Route::delete('/type_depense/{id}', [Ctrtype_depense::class, 'indexID']);
     Route::put('/type_depense/{id}', [Ctrtype_depense::class, 'update']);
+    //type mouvement
+    Route::post('/typemouvement', [Ctrmouvement::class, 'create']);
+    Route::get('/typemouvements', [Ctrmouvement::class, 'index_type']);
+    Route::get('/typemouvement/{id}', [Ctrmouvement::class, 'indexID']);
+    Route::delete('/typemouvement/{id}', [Ctrmouvement::class, 'indexID']);
+    Route::put('/typemouvement/{id}', [Ctrmouvement::class, 'update']);
 });
 

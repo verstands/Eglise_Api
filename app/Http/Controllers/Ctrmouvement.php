@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\mouvement;
+use App\Models\type_mouvement;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -32,9 +33,20 @@ class Ctrmouvement extends Controller
     }
     //index
     public function index(){
-        $view = mouvement::all();
+        $view = mouvement::with('membre')->with('mission')->get();
         return response()->json([
-            'message' => 'Les memnres',
+            'data' => $view
+        ], 200);
+    }
+
+    public function mm($datedebut, $datefin, $jour){
+        $view = mouvement::with('membre')->with('mission')
+        ->whereHas('membre', function($query) use ($datedebut, $datefin) {
+            $query->whereBetween('created_at', [$datedebut, $datefin]);
+        })
+        ->get();
+
+        return response()->json([
             'data' => $view
         ], 200);
     }
@@ -91,5 +103,14 @@ class Ctrmouvement extends Controller
                  'message' => ' identifiant non trouvé ! '
              ], 401);
          }
+    }
+
+
+    //partie de type mouvement
+    public function index_type(){
+        $view = type_mouvement::all();
+        return response()->json([
+            'data' => $view
+        ], 200);
     }
 }
