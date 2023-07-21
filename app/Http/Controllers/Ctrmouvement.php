@@ -61,18 +61,19 @@ class Ctrmouvement extends Controller
             return response()->json([
                 'data' => $view
             ], 200);
-        } else {
+        } elseif($datedebut != 'null' && $datefin != 'null' && $nom != 'null') {
             $view = mouvement::with('membre')->with('mission')->with('id_type')
-                ->whereHas('membre', function ($query) use ($datedebut, $datefin) {
-                    $query->whereBetween('created_at', [$datedebut, $datefin]);
-                })
-                ->whereHas('id_type', function ($query) use ($nom) {
-                    $query->where('nom_typem', $nom);
-                })
-                ->get();
+            ->whereHas('membre', function ($query) use ($datedebut, $datefin) {
+                $query->whereBetween('created_at', [$datedebut, $datefin]);
+            })->get();
+
+        return response()->json([
+            'data' => $view
+        ], 200);
+        }elseif($datedebut == 'null' && $datefin == 'null' && $nom == 'null'){
             return response()->json([
-                'data' => $view
-            ], 200);
+                'message' => "Les champs sont vide !" 
+            ], 422);
         }
     }
     //get ID
