@@ -113,6 +113,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     //nouveauvenu
     Route::post('/nouveauvenu', [Ctrnouveauvenu::class, 'create']);
     Route::get('/nouveauvenus', [Ctrnouveauvenu::class, 'index']);
+    Route::get('/RapportNouveau/{datedebut}/{datefin}', [Ctrnouveauvenu::class, 'RapportNouveau']);
     Route::get('/nouveauvenu/{id}', [Ctrnouveauvenu::class, 'indexID']);
     Route::delete('/nouveauvenu/{id}', [Ctrnouveauvenu::class, 'delete']);
     Route::put('/nouveauvenu/{id}', [Ctrnouveauvenu::class, 'update']);

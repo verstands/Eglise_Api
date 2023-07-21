@@ -94,4 +94,21 @@ class Ctrnouveauvenu extends Controller
              ], 401);
          }
     }
+    public function RapportNouveau($datedebut, $datefin)
+    {
+        if ($datedebut != 'null' && $datefin != 'null') {
+            $view = nouveauvenu::with('culte')
+            ->whereBetween('nouveauvenus.created_at', [$datedebut, $datefin])
+            ->get();
+
+            return response()->json([
+                'data' => $view
+            ], 200);
+        }else{
+            $view = nouveauvenu::with('culte')->get();
+            return response()->json([
+                'message' => "Les champs sont vide !" 
+            ], 422);
+        }
+    }
 }
