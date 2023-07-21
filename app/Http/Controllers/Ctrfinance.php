@@ -20,6 +20,7 @@ class Ctrfinance extends Controller
             'femme' => 'required',
             'enfant' => 'required',
             'montant' => 'required',
+            'effectif' => 'required',
         ]);
         $valide = finance::create([
             'nfiche' => $request->nfiche,
@@ -29,7 +30,8 @@ class Ctrfinance extends Controller
             'homme' => $request->homme,
             'femme' => $request->femme,
             'enfant' => $request->enfant,
-            'montant' => $request->montant
+            'montant' => $request->montant,
+            'effectif' => $request->effectif,
         ]);
 
         return response()->json([
@@ -100,5 +102,24 @@ class Ctrfinance extends Controller
                  'message' => ' identifiant non trouvé ! '
              ], 401);
          }
+    }
+    public function ConsultationFinance($datedebut, $datefin)
+    {
+        if ($datedebut != 'null' && $datefin != 'null') {
+            $view = finance::with('devise')
+            ->with('typeoffrande')
+            ->with('culte')
+            ->whereBetween('finances.created_at', [$datedebut, $datefin])
+            ->get();
+
+            return response()->json([
+                'data' => $view
+            ], 200);
+        }else{
+            $view = finance::with('culte')->get();
+            return response()->json([
+                'message' => "Les champs sont vide !" 
+            ], 422);
+        }
     }
 }

@@ -21,7 +21,8 @@ class finance extends Model
         'homme',
         'femme',
         'enfant',
-        'montant'
+        'montant',
+        'effectif'
     ];
 
     public function devise(){
