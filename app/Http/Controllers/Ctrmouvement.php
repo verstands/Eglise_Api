@@ -35,7 +35,7 @@ class Ctrmouvement extends Controller
     //index
     public function index()
     {
-        $view = mouvement::with('membre')->with('mission')->get();
+        $view = mouvement::with('membre')->with('mission')->with('id_type')->get();
         return response()->json([
             'data' => $view
         ], 200);
