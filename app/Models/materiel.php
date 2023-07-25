@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\devise;
 use App\Models\departement;
+use App\Models\categorie_materiel;
+
 
 
 class materiel extends Model
@@ -25,7 +27,11 @@ class materiel extends Model
         return $this->belongsTo(devise::class, 'devise_id');
     }
 
-    public function departement(){
+    public function id_departement(){
         return $this->belongsTo(departement::class, 'id_departement');
+    }
+
+    public function categorie_id(){
+        return $this->belongsTo(categorie_materiel::class, 'categorie_id');
     }
 }

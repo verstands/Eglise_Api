@@ -36,7 +36,7 @@ class Ctrmateriel extends Controller
     }
     //index
     public function index(){
-        $view = materiel::all();
+        $view = materiel::with('devise')->with('id_departement')->with('categorie_id')->get();
         return response()->json([
             'data' => $view
         ], 200);
