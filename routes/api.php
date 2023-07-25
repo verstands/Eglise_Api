@@ -183,6 +183,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/type_depense', [Ctrtype_depense::class, 'create']);
     Route::get('/type_depenses', [Ctrtype_depense::class, 'index']);
     Route::get('/type_depense/{id}', [Ctrtype_depense::class, 'indexID']);
+    Route::get('/RapportTypeDepnse/{datedebut}/{datefin}', [Ctrtype_depense::class, 'RapportTypeDepnse']);
     Route::delete('/type_depense/{id}', [Ctrtype_depense::class, 'indexID']);
     Route::put('/type_depense/{id}', [Ctrtype_depense::class, 'update']);
     //type mouvement

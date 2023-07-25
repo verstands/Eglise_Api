@@ -106,4 +106,21 @@ class Ctrtype_depense extends Controller
             ], 401);
         }
     }
+
+    public function RapportTypeDepnse($datedebut, $datefin){
+        if ($datedebut != 'null' && $datefin != 'null') {
+            $view = type_depense::with('caisse')->with('depense')
+            ->whereBetween('type_depenses.created_at', [$datedebut, $datefin])
+            ->get();
+
+            return response()->json([
+                'data' => $view
+            ], 200);
+        }else{
+            $view = type_depense::with('caisse')->with('depense')->get();
+            return response()->json([
+                'message' => "Les champs sont vide !" 
+            ], 422);
+        }
+    }
 }
