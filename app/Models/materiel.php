@@ -23,8 +23,8 @@ class materiel extends Model
         'id_departement'
     ];
 
-    public function devise(){
-        return $this->belongsTo(devise::class, 'devise_id');
+    public function devide_id(){
+        return $this->belongsTo(devise::class, 'devide_id');
     }
 
     public function id_departement(){
