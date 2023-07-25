@@ -167,6 +167,12 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::get('/categorie/{id}', [Ctrcategorie::class, 'indexID']);
     Route::delete('/categorie/{id}', [Ctrcategorie::class, 'indexID']);
     Route::put('/categorie/{id}', [Ctrcategorie::class, 'update']);
+    //categorie materiel
+    Route::post('/categorie_materiel', [Ctrcategorie::class, 'create_materiel']);
+    Route::get('/categorie_materiels', [Ctrcategorie::class, 'index_materiel']);
+    Route::get('/categorie_materiel/{id}', [Ctrcategorie::class, 'indexID_materiel']);
+    Route::delete('/categorie_materiel/{id}', [Ctrcategorie::class, 'indexID_materiel']);
+    Route::put('/categorie_materiel/{id}', [Ctrcategorie::class, 'update_materiel']);
     //type_offrande
     Route::post('/typeoffrande', [Ctrtypeoffrande::class, 'create']);
     Route::get('/typeoffrandes', [Ctrtypeoffrande::class, 'index']);
