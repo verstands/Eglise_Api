@@ -133,4 +133,11 @@ class Ctrmembre extends Controller
          }
     }
 
+    public function profil(){
+        $profil = membre::whereId(Auth::user()->id)->first();
+        return response()->json([
+            'data' => $profil
+        ], 200);
+    }
+
 }

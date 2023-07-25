@@ -199,5 +199,8 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::get('/typemouvement/{id}', [Ctrmouvement::class, 'indexID']);
     Route::delete('/typemouvement/{id}', [Ctrmouvement::class, 'indexID']);
     Route::put('/typemouvement/{id}', [Ctrmouvement::class, 'update']);
+    //profile
+    Route::get('/profil', [Ctrmembre::class, 'profil']);
+    
 });
 
