@@ -43,7 +43,7 @@ class Ctrmateriel extends Controller
     }
     //get ID
     public function indexID($id){
-        $verify = materiel::whereId(['id' => $id])->first();
+        $verify = materiel::whereId(['id' => $id])->with('devide_id')->with('id_departement')->with('categorie_id')->first();
         if($verify){
             return response()->json([
                 'data' => $verify
@@ -98,14 +98,14 @@ class Ctrmateriel extends Controller
     public function RapportMateriel($datedebut, $datefin){
         if ($datedebut != 'null' && $datefin != 'null') {
             $view = materiel::with('devide_id')->with('id_departement')->with('categorie_id')
-            ->whereBetween('type_depenses.created_at', [$datedebut, $datefin])
+            ->whereBetween('materiels.created_at', [$datedebut, $datefin])
             ->get();
 
             return response()->json([
                 'data' => $view
             ], 200);
         }else{
-            $view = materiel::with('caisse')->with('depense')->get();
+            $view = materiel::with('devide_id')->with('id_departement')->with('categorie_id')->get();
             return response()->json([
                 'message' => "Les champs sont vide !" 
             ], 422);

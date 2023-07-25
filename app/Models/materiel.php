@@ -20,7 +20,8 @@ class materiel extends Model
         'stock',
         'cout',
         'devide_id',
-        'id_departement'
+        'id_departement',
+        'created_at'
     ];
 
     public function devide_id(){
