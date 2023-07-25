@@ -86,6 +86,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::get('/materiel/{id}', [Ctrmateriel::class, 'indexID']);
     Route::delete('/materiel/{id}', [Ctrmateriel::class, 'delete']);
     Route::put('/materiel/{id}', [Ctrmateriel::class, 'update']);
+    Route::get('/RapportMateriel/{datedebut}/{datefin}', [Ctrmateriel::class, 'RapportMateriel']);
     //membreenfant
     Route::post('/membreenfant', [Ctrmembreenfant::class, 'create']);
     Route::get('/membreenfants', [Ctrmembreenfant::class, 'index']);

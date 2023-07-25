@@ -95,4 +95,20 @@ class Ctrmateriel extends Controller
              ], 401);
          }
     }
+    public function RapportMateriel($datedebut, $datefin){
+        if ($datedebut != 'null' && $datefin != 'null') {
+            $view = materiel::with('devide_id')->with('id_departement')->with('categorie_id')
+            ->whereBetween('type_depenses.created_at', [$datedebut, $datefin])
+            ->get();
+
+            return response()->json([
+                'data' => $view
+            ], 200);
+        }else{
+            $view = materiel::with('caisse')->with('depense')->get();
+            return response()->json([
+                'message' => "Les champs sont vide !" 
+            ], 422);
+        }
+    }
 }
