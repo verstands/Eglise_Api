@@ -76,4 +76,8 @@ class Ctrcategorie extends Controller
              ], 401);
          }
     }
+
+
+    // categorie materiel
+    
 }

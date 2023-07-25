@@ -15,23 +15,39 @@ class Ctrcommunication extends Controller
             'obejet' => 'required',
             'piece' => 'required',
             'text' => 'required',
+            'type_message' => 'required'
         ]);
-        $valide = communication::create([
-            'Departement' => $request->Departement,
-            'obejet' => $request->obejet,
-            'piece' => $request->piece,
-            'text' => $request->text,
-            'membre_id' => Auth::user()->id
-        ]);
-
-        return response()->json([
-            'message' => "communication créé avec succès !",
-            'data' => $valide
-        ], 200);
+        if($request->type_message == "SMS"){
+            $valide = communication::create([
+                'departement' => $request->Departement,
+                'obejet' => $request->obejet,
+                'piece' => $request->piece,
+                'text' => $request->text,
+                'type_message' => $request->type_message,
+                'membre_id' => Auth::user()->id
+            ]);
+            return response()->json([
+                'message' => "sms envoyé avec succès !",
+                'data' => $valide
+            ], 200);
+        }elseif($request->type_message == "EMAIL"){
+            $valide = communication::create([
+                'departement' => $request->departement,
+                'obejet' => $request->obejet,
+                'piece' => $request->piece,
+                'text' => $request->text,
+                'type_message' => $request->type_message,
+                'membre_id' => Auth::user()->id
+            ]);
+            return response()->json([
+                'message' => "email envoyé avec succès !",
+                'data' => $valide
+            ], 200);
+        }
     }
     //index
     public function index(){
-        $view = communication::with('membre')->get();
+        $view = communication::with('membre_id')->with('departement')->get();
         return response()->json([
             'data' => $view
         ], 200);
