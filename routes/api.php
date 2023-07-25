@@ -128,7 +128,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/planning', [Ctrplanning::class, 'create']);
     Route::get('/plannings', [Ctrplanning::class, 'index']);
     Route::get('/planning/{id}', [Ctrplanning::class, 'indexID']);
-    Route::delete('/planning/{id}', [Ctrplanning::class, 'indexID']);
+    Route::delete('/planning/{id}', [Ctrplanning::class, 'delete']);
     Route::put('/planning/{id}', [Ctrplanning::class, 'update']);
     //sousmenu
     Route::post('/sousmenu', [Ctrsousmenu::class, 'create']);

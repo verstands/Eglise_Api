@@ -9,8 +9,8 @@ class planning extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'evenement',
-        'debut',
-        'fin',
+        'title',
+        'start',
+        'end',
     ];
 }

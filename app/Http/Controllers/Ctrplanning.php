@@ -11,18 +11,14 @@ class Ctrplanning extends Controller
 {
     public function create(Request $request){
         $request->validate([
-            'Departement' => 'required',
-            'obejet' => 'required',
-            'piece' => 'required',
-            'text' => 'required',
-            'membre_id' => 'required',
+            'title' => 'required',
+            'start' => 'required',
+            'end' => 'required'
         ]);
         $valide = planning::create([
-            'Departement' => $request->Departement,
-            'obejet' => $request->obejet,
-            'piece' => $request->piece,
-            'text' => $request->text,
-            'membre_id' => $request->membre_id
+            'title' => $request->title,
+            'start' => $request->start,
+            'end' => $request->end
         ]);
 
         return response()->json([
@@ -32,9 +28,8 @@ class Ctrplanning extends Controller
     }
     //index
     public function index(){
-        $view = planning::all();
+        $view = planning::all()->makeHidden(['created_at', 'updated_at']);
         return response()->json([
-            'message' => 'Les memnres',
             'data' => $view
         ], 200);
     }
