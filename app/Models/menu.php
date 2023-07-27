@@ -11,6 +11,8 @@ class menu extends Model
 {
     use HasFactory, HasApiTokens;
     protected $fillable = [
-        'nom_menu'
+        'nom_menu',
+        'lien',
+        'icon'
     ];
 }

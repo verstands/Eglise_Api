@@ -27,6 +27,7 @@ use App\Http\Controllers\Ctrculte;
 use App\Http\Controllers\Ctrtypeoffrande;
 use App\Http\Controllers\Ctrcaisse;
 use App\Http\Controllers\Ctrtype_depense;
+use App\Http\Controllers\CtrAffectationMenu;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -201,6 +202,9 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::put('/typemouvement/{id}', [Ctrmouvement::class, 'update']);
     //profile
     Route::get('/profil', [Ctrmembre::class, 'profil']);
+    //affecattiomenu
+    Route::get('/CtrAffectationMenu/{departement}', [CtrAffectationMenu::class, 'index']);
+
     
 });
 
