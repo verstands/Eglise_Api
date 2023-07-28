@@ -66,7 +66,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/devise', [Ctrdevise::class, 'create']);
     Route::get('/devises', [Ctrdevise::class, 'index']);
     Route::get('/devise/{id}', [Ctrdevise::class, 'indexID']);
-    Route::delete('/devise/{id}', [Ctrdevise::class, 'indexID']);
+    Route::delete('/devise/{id}', [Ctrdevise::class, 'delete']);
     Route::put('/devise/{id}', [Ctrdevise::class, 'update']);
     //displine
     Route::post('/displine', [Ctrdispline::class, 'create']);
@@ -149,7 +149,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::get('/departements', [Ctrdepartement::class, 'index']);
     Route::get('/departementActivite/{departement}', [Ctrdepartement::class, 'da']);
     Route::get('/departement/{id}', [Ctrdepartement::class, 'indexID']);
-    Route::delete('/departement/{id}', [Ctrdepartement::class, 'indexID']);
+    Route::delete('/departement/{id}', [Ctrdepartement::class, 'delete']);
     Route::put('/departement/{id}', [Ctrdepartement::class, 'update']);
     //Ctraffectation
     Route::post('/affectation', [Ctraffectation::class, 'create']);
@@ -167,7 +167,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/categorie', [Ctrcategorie::class, 'create']);
     Route::get('/categories', [Ctrcategorie::class, 'index']);
     Route::get('/categorie/{id}', [Ctrcategorie::class, 'indexID']);
-    Route::delete('/categorie/{id}', [Ctrcategorie::class, 'indexID']);
+    Route::delete('/categorie/{id}', [Ctrcategorie::class, 'delete']);
     Route::put('/categorie/{id}', [Ctrcategorie::class, 'update']);
     //categorie materiel
     Route::post('/categorie_materiel', [Ctrcategorie::class, 'create_materiel']);
@@ -179,7 +179,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/typeoffrande', [Ctrtypeoffrande::class, 'create']);
     Route::get('/typeoffrandes', [Ctrtypeoffrande::class, 'index']);
     Route::get('/typeoffrande/{id}', [Ctrtypeoffrande::class, 'indexID']);
-    Route::delete('/typeoffrande/{id}', [Ctrtypeoffrande::class, 'indexID']);
+    Route::delete('/typeoffrande/{id}', [Ctrtypeoffrande::class, 'delete']);
     Route::put('/typeoffrande/{id}', [Ctrtypeoffrande::class, 'update']);
     //caisse
     Route::post('/caisse', [Ctrcaisse::class, 'create']);

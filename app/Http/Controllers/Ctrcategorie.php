@@ -89,7 +89,7 @@ class Ctrcategorie extends Controller
         ]);
 
         return response()->json([
-            'message' => "categorie créé avec succès !",
+            'message' => "categorie de membre créé avec succès !",
             'data' => $valide
         ], 200);
     }
