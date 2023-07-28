@@ -185,7 +185,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/caisse', [Ctrcaisse::class, 'create']);
     Route::get('/caisses', [Ctrcaisse::class, 'index']);
     Route::get('/caisse/{id}', [Ctrcaisse::class, 'indexID']);
-    Route::delete('/caisse/{id}', [Ctrcaisse::class, 'indexID']);
+    Route::delete('/caisse/{id}', [Ctrcaisse::class, 'delete']);
     Route::put('/caisse/{id}', [Ctrcaisse::class, 'update']);
     //Ctrtype_depense
     Route::post('/type_depense', [Ctrtype_depense::class, 'create']);
