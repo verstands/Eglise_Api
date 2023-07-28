@@ -173,7 +173,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/categorie_materiel', [Ctrcategorie::class, 'create_materiel']);
     Route::get('/categorie_materiels', [Ctrcategorie::class, 'index_materiel']);
     Route::get('/categorie_materiel/{id}', [Ctrcategorie::class, 'indexID_materiel']);
-    Route::delete('/categorie_materiel/{id}', [Ctrcategorie::class, 'indexID_materiel']);
+    Route::delete('/categorie_materiel/{id}', [Ctrcategorie::class, 'delete_materiel']);
     Route::put('/categorie_materiel/{id}', [Ctrcategorie::class, 'update_materiel']);
     //type_offrande
     Route::post('/typeoffrande', [Ctrtypeoffrande::class, 'create']);
@@ -203,8 +203,12 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     //profile
     Route::get('/profil', [Ctrmembre::class, 'profil']);
     //affecattiomenu
-    Route::get('/CtrAffectationMenu/{departement}', [CtrAffectationMenu::class, 'index']);
-
+    Route::get('/AffectationMenu/{departement}', [CtrAffectationMenu::class, 'index']);
+    Route::get('/AffectationMenus', [CtrAffectationMenu::class, 'indexs']);
+    Route::delete('/AffectationMenu', [CtrAffectationMenu::class, 'delete']);
+    Route::post('/AffectationMenu', [CtrAffectationMenu::class, 'create']);
+    //Statistique 
+    Route::get('/membrestatistique', [Ctrstatistique::class, 'staMembre']);
     
 });
 
