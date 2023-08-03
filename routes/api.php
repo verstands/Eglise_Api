@@ -28,6 +28,7 @@ use App\Http\Controllers\Ctrtypeoffrande;
 use App\Http\Controllers\Ctrcaisse;
 use App\Http\Controllers\Ctrtype_depense;
 use App\Http\Controllers\CtrAffectationMenu;
+use App\Http\Controllers\Ctrvideo;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -43,6 +44,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('/login', [Ctrmembre::class, 'login']);
+Route::get('/videos', [Ctrvideo::class, 'index']);
+Route::get('/seul', [Ctrvideo::class, 'seul']);
 Route::group(['middleware' => ['auth:sanctum']], function(){
     //membre
     Route::post('/membre', [Ctrmembre::class, 'create']);
@@ -209,6 +212,11 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/AffectationMenu', [CtrAffectationMenu::class, 'create']);
     //Statistique 
     Route::get('/membrestatistique', [Ctrstatistique::class, 'staMembre']);
+    //Route::video
+    Route::post('/video', [Ctrvideo::class, 'create']);
+    Route::get('/video/{id}', [Ctrvideo::class, 'indexID']);
+    Route::delete('/video/{id}', [Ctrvideo::class, 'delete']);
+    Route::put('/video/{id}', [Ctrvideo::class, 'update']);
     
 });
 

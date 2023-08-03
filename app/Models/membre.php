@@ -24,6 +24,6 @@ class membre extends Model
         'profession',
         'activite',
         'password',
-        
+        'created_at' 
     ];
 }
