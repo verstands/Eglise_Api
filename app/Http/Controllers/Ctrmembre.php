@@ -115,11 +115,7 @@ class Ctrmembre extends Controller
             'sexe' => 'required',
             'telephone' => 'required',
             'adresse' => 'required',
-            'datenaissance' => 'required',
-            'etatcivil' => 'required',
-            'profession' => 'required',
-            'activite' => 'required',
-            'password' => 'required',
+            'password' => 'required'
         ]);
         $verify = membre::whereId($id)->first();
         if ($verify == true) {
@@ -130,14 +126,15 @@ class Ctrmembre extends Controller
                 'prenom' => $request->prenom,
                 'sexe' => $request->sexe,
                 'telephone' => $request->telephone,
+                'adresse' => $request->adresse,
                 'datenaissance' => $request->datenaissance,
-                'etatcivil' => $request->etatcivil,
-                'profession' => $request->profession,
-                'activite' => $request->activite,
-                'password' => $request->password,
+                'etatcivil' => 0,
+                'profession' => 0,
+                'activite' => 0,
+                'password' => $request->password
             ]);
             return response()->json([
-                'message' => 'La ùodification a été fait avec succes ! ',
+                'message' => 'La modification a été fait avec succes ! ',
             ], 200);
         } else {
             return response()->json([

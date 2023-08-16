@@ -29,6 +29,7 @@ use App\Http\Controllers\Ctrcaisse;
 use App\Http\Controllers\Ctrtype_depense;
 use App\Http\Controllers\CtrAffectationMenu;
 use App\Http\Controllers\Ctrvideo;
+use App\Http\Controllers\Ctrevenement;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -205,6 +206,8 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::put('/typemouvement/{id}', [Ctrmouvement::class, 'update']);
     //profile
     Route::get('/profil', [Ctrmembre::class, 'profil']);
+    Route::delete('/profil', [Ctrmembre::class, 'delete']);
+    Route::put('/profil/{id}', [Ctrmembre::class, 'update']);
     //affecattiomenu
     Route::get('/AffectationMenu/{departement}', [CtrAffectationMenu::class, 'index']);
     Route::get('/AffectationMenus', [CtrAffectationMenu::class, 'indexs']);
@@ -217,6 +220,14 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::get('/video/{id}', [Ctrvideo::class, 'indexID']);
     Route::delete('/video/{id}', [Ctrvideo::class, 'delete']);
     Route::put('/video/{id}', [Ctrvideo::class, 'update']);
+     //evenement
+     Route::post('/evenement', [Ctrevenement::class, 'create']);
+     Route::get('/evenements', [Ctrevenement::class, 'index']);
+     Route::get('/seulEvenement', [Ctrevenement::class, 'seul']);
+     Route::get('/tousEvenement', [Ctrevenement::class, 'Tous']);
+     Route::get('/evenement/{id}', [Ctrevenement::class, 'indexID']);
+     Route::delete('/evenement/{id}', [Ctrevenement::class, 'delete']);
+     Route::put('/evenement/{id}', [Ctrevenement::class, 'update']);
     
 });
 
